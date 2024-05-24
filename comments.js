@@ -15,29 +15,5 @@ app.get('/comments', (req, res) => {
 });
 // listen port
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+    console.log(`Server is running on http://localhost:${port}`);
 });
-
-// Path: comments.html
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Comments</title>
-  </head>
-  <body>
-    <h1>Comments</h1>
-    <ul id="comments"></ul>
-    <script>
-      fetch('http://localhost:3000/comments')
-        .then(res => res.json())
-        .then(comments => {
-          const commentsList = document.getElementById('comments');
-          comments.forEach(comment => {
-            const li = document.createElement('li');
-            li.innerText = `${comment.name}: ${comment.comment}`;
-            commentsList.appendChild(li);
-          });
-        });
-    </script>
-  </body>
-</html>
